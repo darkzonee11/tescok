@@ -28,10 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
           navMenu.classList.remove("active")
         }
 
-        // Smooth scroll to target
-        targetSection.scrollIntoView({
+        // Calculate proper offset for navbar
+        const navbarHeight = document.querySelector(".navbar").offsetHeight
+        const targetPosition = targetSection.offsetTop - navbarHeight - 20
+
+        // Smooth scroll to target with proper offset
+        window.scrollTo({
+          top: targetPosition,
           behavior: "smooth",
-          block: "start",
         })
 
         // Update active nav link
@@ -50,9 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
       // Find current section based on scroll position
       const sections = document.querySelectorAll("section[id]")
       let currentSection = ""
+      const navbarHeight = document.querySelector(".navbar").offsetHeight
 
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 100
+        const sectionTop = section.offsetTop - navbarHeight - 50
         const sectionHeight = section.offsetHeight
 
         if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
@@ -240,9 +245,12 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault()
       const targetSection = document.getElementById(keyMap[e.key])
       if (targetSection) {
-        targetSection.scrollIntoView({
+        const navbarHeight = document.querySelector(".navbar").offsetHeight
+        const targetPosition = targetSection.offsetTop - navbarHeight - 20
+
+        window.scrollTo({
+          top: targetPosition,
           behavior: "smooth",
-          block: "start",
         })
       }
     }

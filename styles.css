@@ -216,7 +216,8 @@ body {
 
 /* Section Styles */
 section {
-  padding: 5rem 0;
+  padding: 6rem 0 4rem 0;
+  scroll-margin-top: 80px;
 }
 
 .section-title {
@@ -233,6 +234,13 @@ section {
 /* About Section */
 .about {
   background: var(--surface-color);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.about .container {
+  width: 100%;
 }
 
 .about-content {
